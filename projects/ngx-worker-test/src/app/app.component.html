@@ -1,0 +1,25 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col">
+      <div class="jumbotron">
+        <h1 class="display-4">ngx-worker</h1>
+        <p class="lead">Set of reusable Angular worker classes.</p>
+        <hr class="my-4">
+        <div class="row">
+          <div class="col-6 p-2">
+            <div class="mb-4 text-center">
+              <span class="btn btn-dark" (click)="load()">Dynamically Load</span>
+            </div>
+            <ng-template #dynamic></ng-template>
+          </div>
+          <div class="col-6 p-2">
+            <div class="mb-4 text-center">
+              <span class="btn btn-primary" (click)="lazyLoad()">Lazy load</span>
+            </div>
+            <ng-template #lazy></ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

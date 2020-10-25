@@ -1,0 +1,81 @@
+{
+  "name": "@vlah.io/ngx-worker",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve --port 5100",
+    "build": "ng build ngx-worker --prod",
+    "test": "ng test",
+    "test-lib": "ng test ngx-worker",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "fix-public-api": "node ./scan.js && git add ./projects/ngx-worker/src/public-api.ts",
+    "fix-readme": "cp ./README.md ./projects/ngx-worker/README.md && git add ./projects/ngx-worker/README.md",
+    "fix-version-patch": "cd projects/ngx-worker && npm version patch && cd ../../ && npm run git-add-version",
+    "fix-version-minor": "cd projects/ngx-worker && npm version minor && cd ../../ && npm run git-add-version",
+    "fix-version-major": "cd projects/ngx-worker && npm version major && cd ../../ && npm run git-add-version",
+    "git-add-version": "git add ./projects/ngx-worker/package.json",
+    "git-commit": "git commit -m \"...\"",
+    "git-push": "git push && git push --tags",
+    "prep-release": "npm run fix-public-api && npm run fix-readme",
+    "prep-package": "npm run lint && npm run prep-release && npm run build",
+    "preversion": "npm run lint && npm run prep-release",
+    "version": "",
+    "postversion": "npm run build && npm run publish-release && npm run git-push",
+    "make-patch-release": "npm run fix-version-patch && npm run git-commit && npm version patch",
+    "make-minor-release": "npm run fix-version-minor && npm run git-commit && npm version minor",
+    "make-major-release": "npm run fix-version-major && npm run git-commit && npm version major",
+    "publish-release": "cd dist/ngx-worker && npm publish --access=public && cd ../../"
+  },
+  "private": false,
+  "dependencies": {
+    "@angular/animations": "~10.2.0",
+    "@angular/common": "~10.2.0",
+    "@angular/compiler": "~10.2.0",
+    "@angular/core": "~10.2.0",
+    "@angular/forms": "~10.2.0",
+    "@angular/platform-browser": "~10.2.0",
+    "@angular/platform-browser-dynamic": "~10.2.0",
+    "@angular/router": "~10.2.0",
+    "rxjs": "~6.6.3",
+    "tslib": "^2.0.1",
+    "zone.js": "~0.10.3"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.1002.0",
+    "@angular/cli": "~10.2.0",
+    "@angular/compiler-cli": "~10.2.0",
+    "@types/jasmine": "~3.6.0",
+    "@types/jasminewd2": "~2.0.8",
+    "@types/node": "^14.14.2",
+    "codelyzer": "^6.0.1",
+    "jasmine-core": "~3.6.0",
+    "jasmine-spec-reporter": "~6.0.0",
+    "karma": "~5.2.3",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~3.0.3",
+    "karma-jasmine": "~4.0.1",
+    "karma-jasmine-html-reporter": "^1.5.4",
+    "ng-packagr": "^10.1.2",
+    "protractor": "~7.0.0",
+    "ts-node": "~9.0.0",
+    "tslint": "~6.1.3",
+    "typescript": "~4.0.3"
+  },
+  "description": "Set of reusable Angular worker classes.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vlah-io/ngx-worker.git"
+  },
+  "keywords": [
+    "angular",
+    "angular cli",
+    "angular assets"
+  ],
+  "author": "@vlah.io",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vlah-io/ngx-worker/issues"
+  },
+  "homepage": "https://github.com/vlah-io/ngx-worker#readme"
+}

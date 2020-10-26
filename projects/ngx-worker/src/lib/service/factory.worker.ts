@@ -13,7 +13,9 @@ import {
 } from '@angular/core';
 import {
   GluingOptionsInterface,
-  MakeAndAppendInterface, MakeAndInsertAfterInterface, MakeAndInsertBeforeInterface,
+  MakeAndAppendInterface,
+  MakeAndInsertAfterInterface,
+  MakeAndInsertBeforeInterface,
   MakeAndPrependInterface
 } from '../interface/ngx-worker.interface';
 
@@ -25,8 +27,8 @@ import {
   providedIn: 'root'
 })
 export class FactoryWorker {
-  private renderer: Renderer2;
   error$: EventEmitter<DOMException> = new EventEmitter<DOMException>();
+  private renderer: Renderer2;
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,

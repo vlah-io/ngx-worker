@@ -92,3 +92,7 @@ export interface RemoveChildNodesOptionsInterface {
   nodeName?: string;
   childNode?: any;
 }
+
+export interface SubscriptionLike {
+  unsubscribe(): void;
+}

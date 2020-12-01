@@ -6,7 +6,7 @@ Package generated with `angular-cli` as follows
 ### Create new
 
 ```
-  ng new ngx-worker --createApplication=false --prefix=vlah
+  ng new ngx-worker --createApplication=false --prefix=vlahio
   cd ngx-worker
 ```
 
@@ -14,7 +14,7 @@ Package generated with `angular-cli` as follows
 
 ```
   cd ngx-worker
-  ng generate library ngx-worker --prefix=vlah
+  ng generate library ngx-worker --prefix=vlahio
 ```
 
 ### Generate test application

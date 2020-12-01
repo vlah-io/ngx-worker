@@ -8,13 +8,13 @@ import {FactoryWorker} from '../../../ngx-worker/src/lib/service/factory.worker'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private componentRef: ComponentRef<FactoryWorkerComponent>;
+  private componentRef: ComponentRef<FactoryWorkerComponent> | undefined;
   title = 'ngx-worker-test';
 
   @ViewChild('dynamic', {read: ViewContainerRef})
-  private dynamic: ViewContainerRef;
+  private dynamic: ViewContainerRef | undefined;
   @ViewChild('lazy', {read: ViewContainerRef})
-  private lazy: ViewContainerRef;
+  private lazy: ViewContainerRef | undefined;
 
   constructor(private factoryWorker: FactoryWorker,
               private componentFactoryResolver: ComponentFactoryResolver) {
@@ -32,27 +32,27 @@ export class AppComponent {
     this.componentRef = this.factoryWorker.load(
       FactoryWorkerComponent,
       {
-        container: this.dynamic.element.nativeElement
+        container: this.dynamic?.element.nativeElement
       }
     );
     this.componentRef.instance.close$.subscribe(
       () => {
-        this.componentRef.destroy();
+        this.componentRef?.destroy();
       }
     );
   }
 
   lazyLoad<C, T>(): void {
-    this.lazy.clear();
+    this.lazy?.clear();
     import('./worker/lazy-factory-worker.component').then(
       ({LazyFactoryWorkerComponent}) => {
-        const componentRef = this.lazy.createComponent(
+        const componentRef = this.lazy?.createComponent(
           this.componentFactoryResolver.resolveComponentFactory(LazyFactoryWorkerComponent)
         );
-        componentRef.instance.close$.subscribe(
+        componentRef?.instance.close$.subscribe(
           () => {
             componentRef.destroy();
-            this.lazy.clear();
+            this.lazy?.clear();
           }
         );
       }

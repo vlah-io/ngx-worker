@@ -14,7 +14,6 @@ import {FactoryWorkerComponent} from './worker/factory-worker.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

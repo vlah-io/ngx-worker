@@ -1,6 +1,6 @@
 {
   "name": "@vlah.io/ngx-worker",
-  "version": "4.0.3",
+  "version": "5.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 5100",

@@ -8,13 +8,13 @@ import {FactoryWorker} from '../../../ngx-worker/src/lib/service/factory.worker'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private componentRef: ComponentRef<FactoryWorkerComponent> | undefined;
-  title = 'ngx-worker-test';
-
   @ViewChild('dynamic', {read: ViewContainerRef})
-  private dynamic: ViewContainerRef | undefined;
+  readonly dynamic: ViewContainerRef | undefined;
   @ViewChild('lazy', {read: ViewContainerRef})
-  private lazy: ViewContainerRef | undefined;
+  readonly lazy: ViewContainerRef | undefined;
+
+  componentRef: ComponentRef<FactoryWorkerComponent> | undefined;
+  title = 'ngx-worker-test';
 
   constructor(private factoryWorker: FactoryWorker,
               private componentFactoryResolver: ComponentFactoryResolver) {

@@ -1,11 +1,15 @@
 import {HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/common/http';
+import {Observable} from 'rxjs';
+
+export type ErrorHandlerArgs<T> = ErrorHandlerArgsInterface<T> | undefined;
+export type ErrorWorkerHandleResponse<T> = (err: (HttpErrorResponse | T)) => Observable<T | HttpErrorResponse>;
 
 export interface LoggerInterface {
-  httpErrorResponse<T>(error: HttpErrorResponse | T, errorHandlerArgs: ErrorHandlerArgsInterface<T>): void;
+  httpErrorResponse<T>(error: HttpErrorResponse | T, errorHandlerArgs: ErrorHandlerArgsInterface<T> | undefined): void;
 
   tap<T>(
     url: string,
-    options: OptionsI | OptionsGet | OptionsPost | OptionsPut | OptionsDelete | OptionsRequest,
+    options: undefined | OptionsI | OptionsGet | OptionsPost | OptionsPut | OptionsDelete | OptionsRequest,
     errorHandlerArgs?: ErrorHandlerArgsInterface<T>
   ): void;
 }

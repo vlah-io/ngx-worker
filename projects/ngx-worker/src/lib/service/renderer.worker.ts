@@ -41,7 +41,7 @@ export class RendererWorker {
     if (childNode) {
       this.renderer.removeChild(parent, childNode);
     } else if (Object.prototype.toString.call(index) === '[object Number]') {
-      if (index >= parent.childNodes.length) {
+      if (!index || index >= parent.childNodes.length) {
         return;
       }
 
@@ -55,9 +55,7 @@ export class RendererWorker {
       [].slice
         .call(parent.childNodes)
         .filter(
-          (node: ChildNode) => {
-            return !(nodeName && node.nodeName.toLowerCase() !== nodeName.toLowerCase());
-          }
+          (node: ChildNode) => !(nodeName && node.nodeName.toLowerCase() !== nodeName.toLowerCase())
         )
         .reverse()
         .forEach(

@@ -8,13 +8,13 @@
         <div class="row">
           <div class="col-6 p-2">
             <div class="mb-4 text-center">
-              <span class="btn btn-dark" (click)="load()">Dynamically Load</span>
+              <span (click)="load()" class="btn btn-dark">Dynamically Load</span>
             </div>
             <ng-template #dynamic></ng-template>
           </div>
           <div class="col-6 p-2">
             <div class="mb-4 text-center">
-              <span class="btn btn-primary" (click)="lazyLoad()">Lazy load</span>
+              <span (click)="lazyLoad()" class="btn btn-primary">Lazy load</span>
             </div>
             <ng-template #lazy></ng-template>
           </div>

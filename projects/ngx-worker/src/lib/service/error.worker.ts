@@ -1,7 +1,7 @@
 import {HttpErrorResponse} from '@angular/common/http';
 import {Inject, Injectable} from '@angular/core';
 import {Observable, of, throwError} from 'rxjs';
-import {ErrorHandlerArgsInterface, LoggerInterface} from '../interface/ngx-worker.interface';
+import {ErrorHandlerArgs, ErrorWorkerHandleResponse, LoggerInterface} from '../interface/ngx-worker.interface';
 import {VLAH_LOGGER_SERVICE} from '../token/injection-token';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class ErrorWorker {
    * throwsError - this will force stop the subscription
    * mockResult - optional value to return as the observable result
    */
-  handle<T>(errorHandlerArgs?: ErrorHandlerArgsInterface<T>): (err: (HttpErrorResponse | T)) => Observable<T | HttpErrorResponse> {
+  handle<T>(errorHandlerArgs?: ErrorHandlerArgs<T>): ErrorWorkerHandleResponse<T> {
     errorHandlerArgs = {
       ...{throwsError: true},
       ...errorHandlerArgs

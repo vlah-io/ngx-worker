@@ -98,7 +98,9 @@ export class FactoryWorker {
   }
 
   destroy<C>(compRef: ComponentRef<C>): void {
-    compRef.destroy();
+    if (compRef && Object.prototype.toString.call(compRef.destroy) === '[object Function]') {
+      compRef.destroy();
+    }
   }
 
   // https://medium.com/hackernoon/angular-pro-tip-how-to-dynamically-create-components-in-body-ba200cc289e6
